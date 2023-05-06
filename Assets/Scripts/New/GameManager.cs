@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         _switchPlayers = GetComponent<SwitchPlayers>();
         _cameraManager = GetComponent<CameraManager>();
         _dice = GetComponent<Dice>();
+        _dice.Disable();
         _players.AddPlayers();
         player = _players.playersList[0];
         isPlaying = false;
