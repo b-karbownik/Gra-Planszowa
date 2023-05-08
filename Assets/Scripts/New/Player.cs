@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public int routePosition;
     public int steps;
     public Route currentRoute;
-
+    public int health = 100;
     void Start()
     {
         routePosition = 0;
