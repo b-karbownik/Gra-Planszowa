@@ -52,8 +52,24 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3.15f);
         _cameraManager.SwitchCam(player.GetComponentInChildren<Camera>());
 
-        
-        yield return _playerMove.StartMove(player);
+
+        _playerMove.player = player;
+        while (player.steps > 0)
+        {
+            if (_playerMove.StartMove() == true)
+            {
+                while (_playerMove.MoveToNextField(_playerMove.nextPos))
+                {
+                    yield return null;
+                }
+                yield return new WaitForSeconds(0.1f);
+            }
+            else
+            {
+                yield return null;
+            }
+        }  
+
         _dice.Disable();
         
         _cameraManager.SwitchCam(player.GetComponentInChildren<Camera>());

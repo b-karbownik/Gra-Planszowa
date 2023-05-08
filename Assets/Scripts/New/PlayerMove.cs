@@ -7,59 +7,27 @@ public class PlayerMove : MonoBehaviour
     public float rotationSpeed = 2f;
     public Vector3 nextPos;
     public bool isMoving;
+    public int routeChoice;
+    public Player player;
 
-    public IEnumerator StartMove(Player player)
+    public bool StartMove()
     {
-        Debug.Log("Dzia³a!");
-
-        if (isMoving)
-        {
-            yield break;
-        }
-
-        isMoving = true;
-
-        while (player.steps > 0)
-        {
             if (player.routePosition != player.currentRoute.childFieldList.Count - 1)
             {
                 player.routePosition++;
                 player.routePosition %= player.currentRoute.childFieldList.Count;
                 nextPos = player.currentRoute.childFieldList[player.routePosition].position;
-
-                while (MoveToNextField(nextPos, player))
-                {
-                    yield return null;
-                }
-
-                yield return new WaitForSeconds(0.1f);
                 player.steps--;
+                return true;
             }
             else
             {
-                yield return null;
-                if (Input.GetKeyDown(KeyCode.Alpha1))
-                {
-                    Debug.Log("Wcisnieto 1!");
-                    ChangeRoute(1, player);
-                }
-                else if (Input.GetKeyDown(KeyCode.Alpha2))
-                {
-                    Debug.Log("Wcisnieto 2!");
-                    ChangeRoute(2, player);
-                }
-                else if (Input.GetKeyDown(KeyCode.Alpha3))
-                {
-                    Debug.Log("Wcisnieto 3!");
-                    ChangeRoute(3, player);
-                }
+                return false;
             }
-
-            isMoving = false;
-        }
     }
 
-    bool MoveToNextField(Vector3 goal,Player player)
+
+    public bool MoveToNextField(Vector3 goal)
     {
         Quaternion targetRotation = Quaternion.LookRotation(nextPos - player.transform.position);
         player.transform.rotation = Quaternion.Slerp(player.transform.rotation, targetRotation,
@@ -69,7 +37,8 @@ public class PlayerMove : MonoBehaviour
             Vector3.MoveTowards(player.transform.position, goal, 2f * Time.deltaTime));
     }
 
-    public void ChangeRoute(int chosenRoute,Player player)
+
+    public void ChangeRoute(int chosenRoute)
     {
         if (chosenRoute == 1 && player.currentRoute.availableRoutesChanges.Count > 0)
         {
