@@ -14,4 +14,31 @@ public class Player : MonoBehaviour
         steps = 0;
         currentRoute = GameObject.Find("Route1").GetComponent<Route>();
     }
+
+    public void TakeDamage(int damage)
+    {
+        if (health - damage <= 0)
+        {
+            health = 0;
+            Debug.Log("Ilosc twojego zycia wyniosla 0");
+        }
+        else
+        {
+            health -= damage;
+        }
+        
+    }
+
+    public void TakeHeal(int heal)
+    {
+        if (health + heal >= 100)
+        {
+            health = 100;
+        }
+        else
+        {
+            health += heal;
+        }
+    }
+    
 }

@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(Move());
         }
     }
-
+    
     public IEnumerator Move()
     {
         yield return new WaitForSeconds(3.15f);
@@ -70,11 +70,24 @@ public class GameManager : MonoBehaviour
                 yield return null;
             }
         }  
-
+        CompareFields();
         _dice.Disable();
         
         _cameraManager.SwitchCam(player.GetComponentInChildren<Camera>());
         player = _switchPlayers.Switch(_players, _players.playersList.IndexOf(player));
         isPlaying = false;
+    }
+
+    void CompareFields()
+    {
+        if (player.currentRoute.childFieldList[player.routePosition].CompareTag("AttackField"))
+        {
+            player.TakeDamage(25);
+        }
+        
+        if (player.currentRoute.childFieldList[player.routePosition].CompareTag("HealField"))
+        {
+            player.TakeHeal(25);
+        }
     }
 }
