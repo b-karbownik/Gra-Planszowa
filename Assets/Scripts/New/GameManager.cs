@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Player player;
     public Dice _dice;
     public CameraManager _cameraManager;
+    public ShowArrow _showArrow;
     public bool isPlaying;
 
 
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
         _players = gameObject.GetComponent<Players>();
         _switchPlayers = GetComponent<SwitchPlayers>();
         _cameraManager = GetComponent<CameraManager>();
+        _showArrow = GetComponent<ShowArrow>();
         _dice = GetComponent<Dice>();
         _dice.Disable();
         _players.AddPlayers();
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
         {
             if (_playerMove.StartMove() == true)
             {
+                //_showArrow.Show();
                 while (_playerMove.MoveToNextField(_playerMove.nextPos))
                 {
                     yield return null;
@@ -67,6 +70,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+                //_showArrow.Hide();
                 yield return null;
             }
         }  
