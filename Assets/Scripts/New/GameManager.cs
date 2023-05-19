@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
         _players = gameObject.GetComponent<Players>();
         _switchPlayers = GetComponent<SwitchPlayers>();
         _cameraManager = GetComponent<CameraManager>();
-        _showArrow = GetComponent<ShowArrow>();
         _dice = GetComponent<Dice>();
         _dice.Disable();
         _players.AddPlayers();
@@ -61,16 +60,22 @@ public class GameManager : MonoBehaviour
         {
             if (_playerMove.StartMove() == true)
             {
-                //_showArrow.Show();
+                
                 while (_playerMove.MoveToNextField(_playerMove.nextPos))
                 {
+                    _showArrow.Hide();
                     yield return null;
                 }
                 yield return new WaitForSeconds(0.1f);
+                
             }
             else
             {
-                //_showArrow.Hide();
+                if(player.currentRoute.availableRoutesChanges.Count == 1)
+                {
+                    _playerMove.ChangeRoute(1);
+                }
+                _showArrow.Show();
                 yield return null;
             }
         }  
