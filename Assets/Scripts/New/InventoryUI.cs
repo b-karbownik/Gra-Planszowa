@@ -6,18 +6,25 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    public Player player;
+    public Player selectedPlayer;
     public Text fireballAmount;
     public Text medkitAmount;
+    public GameManager gameManagerInstance;
+
     void Start()
     {
-        
+        gameManagerInstance = FindObjectOfType<GameManager>();
+        selectedPlayer = gameManagerInstance.player;
     }
 
     // Update is called once per frame
     void Update()
     {
-        fireballAmount.text = player.fireballAmount.ToString();
-        medkitAmount.text = player.medkitAmount.ToString();
+        gameManagerInstance = FindObjectOfType<GameManager>();
+        selectedPlayer = gameManagerInstance.player;
+
+        fireballAmount.text = selectedPlayer.fireballAmount.ToString();
+        medkitAmount.text = selectedPlayer.medkitAmount.ToString();
     }
+
 }
