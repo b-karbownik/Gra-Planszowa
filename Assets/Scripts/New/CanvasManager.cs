@@ -26,25 +26,29 @@ public class CanvasManager : MonoBehaviour
         MedkitFalseIcon.SetActive(false);
     }
 
-    public void SwitchButtons()
-    {
-        Roll.SetActive(!Roll.activeSelf);
-        Skip.SetActive(!Skip.activeSelf);
-    }
-
-
     public void HideIcons()
     {
+        Roll.SetActive(true);
+
         FireballTrueIcon.SetActive(false);
         MedkitTrueIcon.SetActive(false);
         FireballFalseIcon.SetActive(false);
         MedkitFalseIcon.SetActive(false);
+        Skip.SetActive(false);
+        Medkit.SetActive(false);
+        Fireball.SetActive(false);
     }
 
     public void ShowIcons()
     {
+        
+        Skip.SetActive(true);
         FireballTrueIcon.SetActive(true);
         MedkitTrueIcon.SetActive(true);
+
+        Roll.SetActive(false);
+        Medkit.SetActive(false);
+        Fireball.SetActive(false);
         FireballFalseIcon.SetActive(false);
         MedkitFalseIcon.SetActive(false);
     }

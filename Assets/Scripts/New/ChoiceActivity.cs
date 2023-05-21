@@ -9,8 +9,24 @@ public class ChoiceActivity : MonoBehaviour
     
     public void ActivityTrue(int choice)
     {
-        _gameManager.Activity = true;
-        Debug.Log("True");   
+        if(choice == 0)
+        {
+            _gameManager.Activity = true;
+            Debug.Log("Pominiêcie kolejki!");
+        }
+        else if (choice == 1 && _gameManager.player.medkitAmount != 0)
+        {
+            _gameManager.Activity = true;
+            _gameManager.player.medkitAmount -= 1;
+            _gameManager.player.health += 25;
+            Debug.Log("Uleczono Medkitem!");
+        }
+        else if (choice == 2 && _gameManager.player.fireballAmount != 0)
+        {
+            _gameManager.Activity = true;
+            _gameManager.player.fireballAmount -= 1;
+            Debug.Log("Fireball leci!");
+        }
     }
 
     public void ActivityFalse(int choice)

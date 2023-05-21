@@ -88,7 +88,6 @@ public class GameManager : MonoBehaviour
 
         //zmien napis na przycisku "roll dice" na "skip turn".
         //zmien dzialanie przycisku.
-        _canvasManager.SwitchButtons();
         _canvasManager.ShowIcons();
 
 
@@ -107,7 +106,6 @@ public class GameManager : MonoBehaviour
 
         //zmien napis na przycisku "skip turn" na "roll dice".
         //zmien dzialanie przycisku
-        _canvasManager.SwitchButtons();
         _canvasManager.HideIcons();
     }
 
