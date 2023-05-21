@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public Dice _dice;
     public CameraManager _cameraManager;
     public ShowArrow _showArrow;
+    public ChoiceActivity _choiceActivity;
     public bool isPlaying;
     public bool Activity;
 
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         _players = gameObject.GetComponent<Players>();
         _switchPlayers = GetComponent<SwitchPlayers>();
         _cameraManager = GetComponent<CameraManager>();
+        _choiceActivity = GetComponent<ChoiceActivity>();
         _dice = GetComponent<Dice>();
         _dice.Disable();
         _players.AddPlayers();

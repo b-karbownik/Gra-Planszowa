@@ -27,9 +27,4 @@ public class InventoryUI : MonoBehaviour
         medkitAmount.text = selectedPlayer.medkitAmount.ToString();
     }
 
-    public void ActivityChoice()
-    {
-        gameManagerInstance.Activity = true;
-    }
-
 }
