@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public CameraManager _cameraManager;
     public ShowArrow _showArrow;
     public ChoiceActivity _choiceActivity;
+    public CanvasManager _canvasManager;
     public bool isPlaying;
     public bool Activity;
 
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
         _switchPlayers = GetComponent<SwitchPlayers>();
         _cameraManager = GetComponent<CameraManager>();
         _choiceActivity = GetComponent<ChoiceActivity>();
+        _canvasManager = GetComponent<CanvasManager>();
         _dice = GetComponent<Dice>();
         _dice.Disable();
         _players.AddPlayers();
@@ -82,7 +84,14 @@ public class GameManager : MonoBehaviour
                 _showArrow.Show();
                 yield return null;
             }
-        }  
+        }
+
+        //zmien napis na przycisku "roll dice" na "skip turn".
+        //zmien dzialanie przycisku.
+        _canvasManager.SwitchButtons();
+        _canvasManager.ShowIcons();
+
+
         CompareFields();
         _dice.Disable();
         
@@ -95,6 +104,11 @@ public class GameManager : MonoBehaviour
 
         isPlaying = false;
         player = _switchPlayers.Switch(_players, _players.playersList.IndexOf(player));
+
+        //zmien napis na przycisku "skip turn" na "roll dice".
+        //zmien dzialanie przycisku
+        _canvasManager.SwitchButtons();
+        _canvasManager.HideIcons();
     }
 
     void CompareFields()
