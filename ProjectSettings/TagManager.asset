@@ -6,6 +6,7 @@ TagManager:
   tags:
   - AttackField
   - HealField
+  - Fireball
   layers:
   - Default
   - TransparentFX

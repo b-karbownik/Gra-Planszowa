@@ -46,5 +46,10 @@ public class Player : MonoBehaviour
             health += heal;
         }
     }
-    
+
+    public void TakeFireball()
+    {
+        fireballAmount += 1;
+    }
+
 }

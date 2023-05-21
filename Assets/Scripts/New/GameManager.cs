@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public CameraManager _cameraManager;
     public ShowArrow _showArrow;
     public bool isPlaying;
+    public bool Activity;
 
 
     void Awake()
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
         _players.AddPlayers();
         player = _players.playersList[0];
         isPlaying = false;
+        Activity = false;
     }
 
 
@@ -83,8 +85,14 @@ public class GameManager : MonoBehaviour
         _dice.Disable();
         
         _cameraManager.SwitchCam(player.GetComponentInChildren<Camera>());
-        player = _switchPlayers.Switch(_players, _players.playersList.IndexOf(player));
+
+        while (Activity == false)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+
         isPlaying = false;
+        player = _switchPlayers.Switch(_players, _players.playersList.IndexOf(player));
     }
 
     void CompareFields()
@@ -92,11 +100,20 @@ public class GameManager : MonoBehaviour
         if (player.currentRoute.childFieldList[player.routePosition].CompareTag("AttackField"))
         {
             player.TakeDamage(25);
+            Debug.Log("Zadano obrazenia!");
         }
-        
-        if (player.currentRoute.childFieldList[player.routePosition].CompareTag("HealField"))
+        else if (player.currentRoute.childFieldList[player.routePosition].CompareTag("HealField"))
         {
             player.TakeHeal(25);
+            Debug.Log("Uleczono!");
         }
+        else if (player.currentRoute.childFieldList[player.routePosition].CompareTag("Fireball"))
+        {
+            player.TakeFireball();
+            Debug.Log("Dodano 1 fireball!");
+        }
+
     }
+
+
 }
