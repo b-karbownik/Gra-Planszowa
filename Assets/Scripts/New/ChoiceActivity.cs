@@ -6,7 +6,9 @@ public class ChoiceActivity : MonoBehaviour
 {
     public int choice;
     public GameManager _gameManager;
-    
+    public Player player1;
+    public Player player2;
+
     public void ActivityTrue(int choice)
     {
         if(choice == 0)
@@ -23,6 +25,9 @@ public class ChoiceActivity : MonoBehaviour
         }
         else if (choice == 2 && _gameManager.player.fireballAmount != 0)
         {
+            player1 = _gameManager.player;
+            player2 = _gameManager._selectPlayer._selectedPlayer;
+            
             _gameManager.Activity = true;
             _gameManager.player.fireballAmount -= 1;
             Debug.Log("Fireball leci!");
