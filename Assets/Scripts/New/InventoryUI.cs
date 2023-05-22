@@ -9,6 +9,8 @@ public class InventoryUI : MonoBehaviour
     public Player selectedPlayer;
     public Text fireballAmount;
     public Text medkitAmount;
+    public Text fireballAmount2;
+    public Text medkitAmount2;
     public GameManager gameManagerInstance;
 
     void Start()
@@ -17,7 +19,6 @@ public class InventoryUI : MonoBehaviour
         selectedPlayer = gameManagerInstance.player;
     }
 
-    // Update is called once per frame
     void Update()
     {
         gameManagerInstance = FindObjectOfType<GameManager>();
@@ -25,6 +26,8 @@ public class InventoryUI : MonoBehaviour
 
         fireballAmount.text = selectedPlayer.fireballAmount.ToString();
         medkitAmount.text = selectedPlayer.medkitAmount.ToString();
+        fireballAmount2.text = selectedPlayer.fireballAmount.ToString();
+        medkitAmount2.text = selectedPlayer.medkitAmount.ToString();
     }
 
 }
