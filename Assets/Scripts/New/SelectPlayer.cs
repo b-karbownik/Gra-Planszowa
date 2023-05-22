@@ -44,7 +44,6 @@ public class SelectPlayer : MonoBehaviour
         {
             PlayersImage[i].enabled = false;
         }
-
     }
 
     public void RightChangePlayer()
