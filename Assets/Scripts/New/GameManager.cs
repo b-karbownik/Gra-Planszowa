@@ -91,7 +91,9 @@ public class GameManager : MonoBehaviour
         //zmien napis na przycisku "roll dice" na "skip turn".
         //zmien dzialanie przycisku.
         _canvasManager.ShowIcons();
-        _selectPlayer.SelectPlayersList();
+        _selectPlayer.ClearPlayersList();
+        _selectPlayer.SelectPlayersList(_players.playersList.IndexOf(player));
+        
 
 
         CompareFields();
