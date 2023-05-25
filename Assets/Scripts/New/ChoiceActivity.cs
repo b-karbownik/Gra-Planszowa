@@ -8,6 +8,7 @@ public class ChoiceActivity : MonoBehaviour
     public GameManager _gameManager;
     public Player player1;
     public Player player2;
+    public Fireball _fireball;
 
     public void ActivityTrue(int choice)
     {
@@ -31,6 +32,7 @@ public class ChoiceActivity : MonoBehaviour
             _gameManager.Activity = true;
             _gameManager.player.fireballAmount -= 1;
             Debug.Log("Fireball leci!");
+            StartCoroutine(_fireball.MoveFireball(player1, player2));
         }
     }
 

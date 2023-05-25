@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public int steps;
     public Route currentRoute;
     public int health = 100;
-    
+
     //inventory-start
     public int fireballAmount;
     public int medkitAmount;
