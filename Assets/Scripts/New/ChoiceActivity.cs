@@ -34,6 +34,7 @@ public class ChoiceActivity : MonoBehaviour
             Debug.Log("Fireball leci!");
             _fireball.Initialize();
             StartCoroutine(_fireball.MoveFireball(player1, player2));
+            player2.health -= 25;
         }
     }
 
