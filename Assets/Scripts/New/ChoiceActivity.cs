@@ -32,6 +32,7 @@ public class ChoiceActivity : MonoBehaviour
             _gameManager.Activity = true;
             _gameManager.player.fireballAmount -= 1;
             Debug.Log("Fireball leci!");
+            _fireball.Initialize();
             StartCoroutine(_fireball.MoveFireball(player1, player2));
         }
     }
