@@ -77,6 +77,7 @@ public class Fireball : MonoBehaviour
             yield return null;
         }
 
+        p2.health -= 25;
         fireball.SetActive(false);
         explosion.SetActive(true);
 

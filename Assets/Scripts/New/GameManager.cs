@@ -62,7 +62,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3.15f);
         _cameraManager.SwitchCam(player.GetComponentInChildren<Camera>());
 
-
         _playerMove.player = player;
         while (player.steps > 0)
         {
@@ -88,14 +87,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //zmien napis na przycisku "roll dice" na "skip turn".
-        //zmien dzialanie przycisku.
         _canvasManager.ShowIcons();
         _selectPlayer.ClearPlayersList();
         _selectPlayer.SelectPlayersList(_players.playersList.IndexOf(player));
-        
-
-
+       
         CompareFields();
         _dice.Disable();
         
@@ -106,11 +101,11 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
+        CheckHpAmount();
+
         isPlaying = false;
         player = _switchPlayers.Switch(_players, _players.playersList.IndexOf(player));
 
-        //zmien napis na przycisku "skip turn" na "roll dice".
-        //zmien dzialanie przycisku
         _canvasManager.HideIcons();
         _selectPlayer.ClearPlayersList();
     }
@@ -137,8 +132,32 @@ public class GameManager : MonoBehaviour
             player.TakeMedkit();
             Debug.Log("Dodano 1 medkit!");
         }
-
     }
 
+    void CheckHpAmount()
+    {
+        foreach (Player player in _players.playersList)
+        {
+            if (player.health <= 0)
+            {
+                GameObject respawnPoint = GameObject.FindGameObjectWithTag("Respawn");
 
+                if (respawnPoint != null)
+                {
+                    Vector3 respawnPosition = respawnPoint.transform.position;
+                    player.transform.position = respawnPosition;
+                    player.routePosition = 0;
+                    player.currentRoute = GameObject.Find("Route1").GetComponent<Route>();
+                    player.health += 100;
+                }
+                else
+                {
+                    Debug.LogWarning("Brak obiektu z tagiem 'Respawn' w scenie.");
+                }
+            }
+        }
+    }
 }
+
+
+
