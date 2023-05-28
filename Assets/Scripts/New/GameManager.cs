@@ -132,6 +132,11 @@ public class GameManager : MonoBehaviour
             player.TakeFireball();
             Debug.Log("Dodano 1 fireball!");
         }
+        else if (player.currentRoute.childFieldList[player.routePosition].CompareTag("MedKit"))
+        {
+            player.TakeMedkit();
+            Debug.Log("Dodano 1 medkit!");
+        }
 
     }
 

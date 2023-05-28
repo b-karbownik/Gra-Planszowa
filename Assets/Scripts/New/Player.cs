@@ -52,4 +52,9 @@ public class Player : MonoBehaviour
         fireballAmount += 1;
     }
 
+    public void TakeMedkit()
+    {
+        medkitAmount += 1;
+    }
+
 }
