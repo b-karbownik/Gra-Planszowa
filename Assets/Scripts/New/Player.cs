@@ -9,11 +9,11 @@ public class Player : MonoBehaviour
     public Route currentRoute;
     public int health = 100;
 
-    //inventory-start
     public int fireballAmount;
     public int medkitAmount;
-    
-    //inventory-end
+
+    public int points;
+
     void Start()
     {
         routePosition = 0;
