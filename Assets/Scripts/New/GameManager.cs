@@ -132,6 +132,11 @@ public class GameManager : MonoBehaviour
             player.TakeMedkit();
             Debug.Log("Dodano 1 medkit!");
         }
+        else if (player.currentRoute.childFieldList[player.routePosition].CompareTag("Coin"))
+        {
+            player.TakeCoin();
+            Debug.Log("Dodano 1 coin!");
+        }
     }
 
     void CheckHpAmount()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -14,11 +15,20 @@ public class Player : MonoBehaviour
 
     public int points;
 
+    public TextMeshProUGUI pointsAmmount;
+
+
+
     void Start()
     {
         routePosition = 0;
         steps = 0;
         currentRoute = GameObject.Find("Route1").GetComponent<Route>();
+    }
+
+    void Update()
+    {
+        pointsAmmount.text = points.ToString();
     }
 
     public void TakeDamage(int damage)
@@ -55,6 +65,11 @@ public class Player : MonoBehaviour
     public void TakeMedkit()
     {
         medkitAmount += 1;
+    }
+
+    public void TakeCoin()
+    {
+        points += 1;
     }
 
 }

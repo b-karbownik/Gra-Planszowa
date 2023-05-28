@@ -13,6 +13,7 @@ public class InventoryUI : MonoBehaviour
     public Text medkitAmount2;
     public GameManager gameManagerInstance;
 
+
     void Start()
     {
         gameManagerInstance = FindObjectOfType<GameManager>();

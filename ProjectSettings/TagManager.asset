@@ -8,6 +8,7 @@ TagManager:
   - HealField
   - Fireball
   - MedKit
+  - Coin
   layers:
   - Default
   - TransparentFX
