@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -115,6 +116,8 @@ public class GameManager : MonoBehaviour
 
         _canvasManager.HideIcons();
         _selectPlayer.ClearPlayersList();
+
+        CheckPointsAmount();
     }
 
     void CompareFields()
@@ -223,6 +226,17 @@ public class GameManager : MonoBehaviour
                 {
                     Debug.LogWarning("Brak obiektu z tagiem 'Respawn' w scenie.");
                 }
+            }
+        }
+    }
+
+    void CheckPointsAmount()
+    {
+        foreach (Player player in _players.playersList)
+        {
+            if (player.points >= 10)
+            {
+                SceneManager.LoadScene("End");
             }
         }
     }

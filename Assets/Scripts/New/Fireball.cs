@@ -81,7 +81,7 @@ public class Fireball : MonoBehaviour
         fireball.SetActive(false);
         explosion.SetActive(true);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
 
         explosion.SetActive(false);
     }
