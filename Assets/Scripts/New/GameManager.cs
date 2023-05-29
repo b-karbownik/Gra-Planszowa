@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public ChoiceActivity _choiceActivity;
     public CanvasManager _canvasManager;
     public SelectPlayer _selectPlayer;
+    public RandomCoinSystem _coinSystem;
     public bool isPlaying;
     public bool Activity;
 
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
         _canvasManager = GetComponent<CanvasManager>();
         _selectPlayer = GetComponent<SelectPlayer>();
         _dice = GetComponent<Dice>();
+        _coinSystem = GetComponent<RandomCoinSystem>();
         _dice.Disable();
         _players.AddPlayers();
         player = _players.playersList[0];
@@ -135,6 +137,7 @@ public class GameManager : MonoBehaviour
         else if (player.currentRoute.childFieldList[player.routePosition].CompareTag("Coin"))
         {
             player.TakeCoin();
+            _coinSystem.NewRandomCoin();
             Debug.Log("Dodano 1 coin!");
         }
     }

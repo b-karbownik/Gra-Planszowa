@@ -16,7 +16,7 @@ public class RandomCoinSystem : MonoBehaviour
         AddCoinToRandomField();
     }
 
-    void GenerateChildList(Transform parent)
+    public void GenerateChildList(Transform parent)
     {
         foreach (Transform child in parent)
         {
@@ -32,7 +32,7 @@ public class RandomCoinSystem : MonoBehaviour
         }
     }
 
-    void AddCoinToRandomField()
+    public void AddCoinToRandomField()
     {
         if (allFields.Count == 0)
         {
@@ -48,5 +48,30 @@ public class RandomCoinSystem : MonoBehaviour
         GameObject coin = Instantiate(coinPrefab, randomField);
         coin.transform.localPosition = new Vector3(0f, 0f, 0.015f);
         coin.transform.rotation = Quaternion.Euler(0f, -90f, -90f);
+
+        Destroy(coinPrefab); // Usuniêcie oryginalnego obiektu "coin"
+        coinPrefab = coin; // Ustawienie klona jako nowy obiekt "coin"
+    }
+
+    public void NewRandomCoin()
+    {
+        // Wyzerowanie listy pól
+        allFields.Clear();
+
+        // Utworzenie nowej listy pól
+        GenerateChildList(parentObject);
+
+        // Usuniêcie tagu "Coin" z pola, na którym znajduje siê coinPrefab
+        if (coinPrefab != null)
+        {
+            Transform coinField = coinPrefab.transform.parent;
+            if (coinField != null)
+            {
+                coinField.tag = "Untagged";
+            }
+        }
+
+        // Dodanie monety na nowo wylosowane pole
+        AddCoinToRandomField();
     }
 }

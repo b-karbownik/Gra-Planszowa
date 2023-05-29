@@ -23,16 +23,18 @@ public class ChoiceActivity : MonoBehaviour
             return; // Jeœli aktywnoœæ jest ju¿ w trakcie wykonywania, przerwij funkcjê
         }
 
-        isActivityInProgress = true;
+        
 
         if (choice == 0)
         {
+            isActivityInProgress = true;
             _gameManager.Activity = true;
             Debug.Log("Pominiêcie kolejki!");
             FinishActivity();
         }
         else if (choice == 1 && _gameManager.player.medkitAmount != 0)
         {
+            isActivityInProgress = true;
             _gameManager.Activity = true;
             _gameManager.player.medkitAmount -= 1;
             _gameManager.player.health += 25;
@@ -41,6 +43,7 @@ public class ChoiceActivity : MonoBehaviour
         }
         else if (choice == 2 && _gameManager.player.fireballAmount != 0)
         {
+            isActivityInProgress = true;
             player1 = _gameManager.player;
             player2 = _gameManager._selectPlayer._selectedPlayer;
 
