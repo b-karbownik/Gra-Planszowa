@@ -16,6 +16,7 @@ TagManager:
   - MedKitCoin
   - FireballCoin
   - CoinIcon
+  - ShieldField
   layers:
   - Default
   - TransparentFX
