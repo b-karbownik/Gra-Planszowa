@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public RandomCoinSystem _coinSystem;
     public bool isPlaying;
     public bool Activity;
+    public GameObject StartField;
 
 
     void Awake()
@@ -74,6 +75,10 @@ public class GameManager : MonoBehaviour
                 {
                     _showArrow.Hide();
                     yield return null;
+                }
+                if (_playerMove.nextPos == StartField.transform.position)
+                {
+                    player.points += 1;
                 }
                 yield return new WaitForSeconds(0.1f);
                 

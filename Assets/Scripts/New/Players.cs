@@ -18,4 +18,9 @@ public class Players : MonoBehaviour
             }
         }
     }
+
+    void update()
+    {
+
+    }
 }
