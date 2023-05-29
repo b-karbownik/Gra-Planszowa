@@ -17,6 +17,8 @@ TagManager:
   - FireballCoin
   - CoinIcon
   - ShieldField
+  - shield
+  - ShieldFieldCoin
   layers:
   - Default
   - TransparentFX
