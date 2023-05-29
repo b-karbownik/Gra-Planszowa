@@ -103,6 +103,10 @@ public class RandomCoinSystem : MonoBehaviour
         {
             Field.tag = "FireballCoin";
         }
+        else if (Field.tag == "ShieldField")
+        {
+            Field.tag = "ShieldFieldCoin";
+        }
 
         coin = Instantiate(coinPrefab, Field);
         coin.transform.localPosition = new Vector3(0f, 0f, 0.015f);

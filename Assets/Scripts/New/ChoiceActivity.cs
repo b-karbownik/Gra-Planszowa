@@ -41,7 +41,7 @@ public class ChoiceActivity : MonoBehaviour
             Debug.Log("Uleczono Medkitem!");
             FinishActivity();
         }
-        else if (choice == 2 && _gameManager.player.fireballAmount != 0)
+        else if (choice == 2 && _gameManager.player.fireballAmount != 0 && _gameManager._selectPlayer._selectedPlayer.currentRoute.childFieldList[_gameManager._selectPlayer._selectedPlayer.routePosition].tag!="ShieldField")
         {
             isActivityInProgress = true;
             player1 = _gameManager.player;
