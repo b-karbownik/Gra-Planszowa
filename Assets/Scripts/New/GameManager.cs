@@ -145,6 +145,38 @@ public class GameManager : MonoBehaviour
             _coinSystem.NewRandomCoin();
             Debug.Log("Dodano 1 coin!");
         }
+        else if (player.currentRoute.childFieldList[player.routePosition].CompareTag("AttackFieldCoin"))
+        {
+            player.TakeCoin();
+            player.TakeDamage(25);
+            player.currentRoute.childFieldList[player.routePosition].tag = "AttackField";
+            Debug.Log("Dodano 1 coin!");
+            Debug.Log("Zadano obrazenia!");
+        }
+        else if (player.currentRoute.childFieldList[player.routePosition].CompareTag("HealFieldCoin"))
+        {
+            player.TakeCoin();
+            player.TakeHeal(25);
+            player.currentRoute.childFieldList[player.routePosition].tag = "HealField";
+            Debug.Log("Dodano 1 coin!");
+            Debug.Log("Uleczono!");
+        }
+        else if (player.currentRoute.childFieldList[player.routePosition].CompareTag("FireballCoin"))
+        {
+            player.TakeCoin();
+            player.TakeFireball();
+            player.currentRoute.childFieldList[player.routePosition].tag = "Fireball";
+            Debug.Log("Dodano 1 coin!");
+            Debug.Log("Dodano 1 fireball!");
+        }
+        else if (player.currentRoute.childFieldList[player.routePosition].CompareTag("MedKitCoin"))
+        {
+            player.TakeCoin();
+            player.TakeMedkit();
+            player.currentRoute.childFieldList[player.routePosition].tag = "MedKit";
+            Debug.Log("Dodano 1 coin!");
+            Debug.Log("Dodano 1 medkit!");
+        }
     }
 
     void CheckHpAmount()
@@ -159,9 +191,15 @@ public class GameManager : MonoBehaviour
                 {
                     Vector3 respawnPosition = respawnPoint.transform.position;
                     player.transform.position = respawnPosition;
+                    if (player.points != 0)
+                    {
+                        player.points -= 1;
+                        _coinSystem.AddCoinToField(player.currentRoute.childFieldList[player.routePosition].transform);
+                    }
+                    player.transform.rotation = Quaternion.Euler(0f, -45f, 0f);
                     player.routePosition = 0;
                     player.currentRoute = GameObject.Find("Route1").GetComponent<Route>();
-                    player.health += 100;
+                    player.health += 100; 
                 }
                 else
                 {

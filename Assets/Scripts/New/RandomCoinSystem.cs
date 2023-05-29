@@ -74,4 +74,36 @@ public class RandomCoinSystem : MonoBehaviour
         // Dodanie monety na nowo wylosowane pole
         AddCoinToRandomField();
     }
+
+
+    public void AddCoinToField(Transform Field)
+    {
+        Debug.Log("Dziala!!!!!!");
+        
+
+        if(Field.tag == "Untagged")
+        {
+            Field.tag = "PlayerCoin";
+        }
+        else if(Field.tag == "AttackField")
+        {
+            Field.tag = "AttackFieldCoin";
+        }
+        else if (Field.tag == "HealField")
+        {
+            Field.tag = "HealFieldCoin";
+        }
+        else if (Field.tag == "MedKit")
+        {
+            Field.tag = "MedKitCoin";
+        }
+        else if (Field.tag == "Fireball")
+        {
+            Field.tag = "FireballCoin";
+        }
+
+        GameObject coin = Instantiate(coinPrefab, Field);
+        coin.transform.localPosition = new Vector3(0f, 0f, 0.015f);
+        coin.transform.rotation = Quaternion.Euler(0f, -90f, -90f);
+    }
 }

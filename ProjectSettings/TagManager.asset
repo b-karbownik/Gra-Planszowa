@@ -9,6 +9,12 @@ TagManager:
   - Fireball
   - MedKit
   - Coin
+  - PlayerCoin
+  - Route
+  - AttackFieldCoin
+  - HealFieldCoin
+  - MedKitCoin
+  - FireballCoin
   layers:
   - Default
   - TransparentFX
