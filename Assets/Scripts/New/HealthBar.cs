@@ -10,7 +10,7 @@ public class HealthBar : MonoBehaviour
     public Image HealthImage;
 
     private float targetFillAmount;
-    public float fillSpeed = 5.0f;
+    public float fillSpeed = 0.1f;
 
     private Coroutine fillCoroutine;
 
