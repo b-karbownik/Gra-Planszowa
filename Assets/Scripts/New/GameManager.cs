@@ -145,10 +145,18 @@ public class GameManager : MonoBehaviour
             _coinSystem.NewRandomCoin();
             Debug.Log("Dodano 1 coin!");
         }
+        else if (player.currentRoute.childFieldList[player.routePosition].CompareTag("PlayerCoin"))
+        {
+            player.TakeCoin();
+            player.currentRoute.childFieldList[player.routePosition].tag = "Untagged";
+            _coinSystem.DeleteCoin(player.currentRoute.childFieldList[player.routePosition]);
+            Debug.Log("Dodano 1 coin!");
+        }
         else if (player.currentRoute.childFieldList[player.routePosition].CompareTag("AttackFieldCoin"))
         {
             player.TakeCoin();
             player.TakeDamage(25);
+            _coinSystem.DeleteCoin(player.currentRoute.childFieldList[player.routePosition]);
             player.currentRoute.childFieldList[player.routePosition].tag = "AttackField";
             Debug.Log("Dodano 1 coin!");
             Debug.Log("Zadano obrazenia!");
@@ -157,6 +165,7 @@ public class GameManager : MonoBehaviour
         {
             player.TakeCoin();
             player.TakeHeal(25);
+            _coinSystem.DeleteCoin(player.currentRoute.childFieldList[player.routePosition]);
             player.currentRoute.childFieldList[player.routePosition].tag = "HealField";
             Debug.Log("Dodano 1 coin!");
             Debug.Log("Uleczono!");
@@ -165,6 +174,7 @@ public class GameManager : MonoBehaviour
         {
             player.TakeCoin();
             player.TakeFireball();
+            _coinSystem.DeleteCoin(player.currentRoute.childFieldList[player.routePosition]);
             player.currentRoute.childFieldList[player.routePosition].tag = "Fireball";
             Debug.Log("Dodano 1 coin!");
             Debug.Log("Dodano 1 fireball!");
@@ -173,6 +183,7 @@ public class GameManager : MonoBehaviour
         {
             player.TakeCoin();
             player.TakeMedkit();
+            _coinSystem.DeleteCoin(player.currentRoute.childFieldList[player.routePosition]);
             player.currentRoute.childFieldList[player.routePosition].tag = "MedKit";
             Debug.Log("Dodano 1 coin!");
             Debug.Log("Dodano 1 medkit!");
