@@ -15,6 +15,7 @@ TagManager:
   - HealFieldCoin
   - MedKitCoin
   - FireballCoin
+  - CoinIcon
   layers:
   - Default
   - TransparentFX

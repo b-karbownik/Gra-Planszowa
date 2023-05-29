@@ -10,6 +10,8 @@ public class RandomCoinSystem : MonoBehaviour
 
     public GameObject coinPrefab; // Prefabrykat obiektu Coin
 
+    public GameObject coin;
+
     void Start()
     {
         GenerateChildList(parentObject);
@@ -102,8 +104,19 @@ public class RandomCoinSystem : MonoBehaviour
             Field.tag = "FireballCoin";
         }
 
-        GameObject coin = Instantiate(coinPrefab, Field);
+        coin = Instantiate(coinPrefab, Field);
         coin.transform.localPosition = new Vector3(0f, 0f, 0.015f);
         coin.transform.rotation = Quaternion.Euler(0f, -90f, -90f);
+    }
+
+    public void DeleteCoin(Transform field)
+    {
+        foreach (Transform child in field)
+        {
+            if (child.CompareTag("CoinIcon"))
+            {
+                Destroy(child.gameObject);
+            }
+        }
     }
 }
