@@ -9,4 +9,9 @@ public class EndScreen : MonoBehaviour
     {
         SceneManager.LoadScene("Board");
     }
+
+    public void BackButton()
+    {
+        SceneManager.LoadScene("Start");
+    }
 }
