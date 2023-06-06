@@ -10,7 +10,8 @@ public class ChoiceActivity : MonoBehaviour
     public Player player2;
     public Fireball _fireball;
     private bool isActivityInProgress;
-
+    //manipulacja swiatlem gdy nadupia fireball
+    public GameObject lightObject;
     void Start()
     {
         isActivityInProgress = false;
@@ -20,7 +21,7 @@ public class ChoiceActivity : MonoBehaviour
     {
         if (isActivityInProgress)
         {
-            return; // Jeœli aktywnoœæ jest ju¿ w trakcie wykonywania, przerwij funkcjê
+            return; // Jeï¿½li aktywnoï¿½ï¿½ jest juï¿½ w trakcie wykonywania, przerwij funkcjï¿½
         }
 
         
@@ -29,7 +30,7 @@ public class ChoiceActivity : MonoBehaviour
         {
             isActivityInProgress = true;
             _gameManager.Activity = true;
-            Debug.Log("Pominiêcie kolejki!");
+            Debug.Log("Pominiï¿½cie kolejki!");
             FinishActivity();
         }
         else if (choice == 1 && _gameManager.player.medkitAmount != 0)
